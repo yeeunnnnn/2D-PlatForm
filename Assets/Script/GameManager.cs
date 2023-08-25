@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,7 +13,15 @@ public class GameManager : MonoBehaviour
     public PlayerMove player;
     public GameObject[] Stages;
 
+    public Image[] UIhealth;
+    public Text UIPoint;
+    public Text UIStage;
+    public GameObject RestartBtn;
 
+    private void Update()
+    {
+        UIPoint.text = (totalPoint + stagePoint).ToString();
+    }
     public void NextStage()
     {
         //Change Stage
@@ -21,6 +31,8 @@ public class GameManager : MonoBehaviour
             stageIndex++;
             Stages[stageIndex].SetActive(true);
             PlayerReposition();
+
+            UIStage.text = "STAGE " + (stageIndex + 1);
         }
         else    // Game Clear
         {
@@ -31,6 +43,9 @@ public class GameManager : MonoBehaviour
             Debug.Log("게임 클리어!");
 
             // Restart Button UI
+            Text btnText = RestartBtn.GetComponentInChildren<Text>();
+            btnText.text = "Clear!";
+            RestartBtn.SetActive(true);
         }
 
         // Calculate Point
@@ -41,9 +56,15 @@ public class GameManager : MonoBehaviour
     public void HealthDown()
     {
         if (health > 1)
+        {
             health--;
+            UIhealth[health].color = new Color(1, 0, 0, 0.4f);
+        }
         else
         {
+            // All Health UI off
+            UIhealth[0].color = new Color(1, 0, 0, 0.4f);
+
             // Player Die Effect
             player.OnDie();
 
@@ -51,6 +72,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("죽었습니다!");
 
             // Retry Button UI
+            RestartBtn.SetActive(true);
         }
     }
 
@@ -74,6 +96,12 @@ public class GameManager : MonoBehaviour
     {
         player.transform.position = new Vector3(0, 0, -1);
         player.VelocityZero();
+    }
+
+    public void Restart()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0);
     }
 
 
