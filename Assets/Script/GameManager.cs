@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
         //Change Stage
         if (stageIndex < Stages.Length - 1)
         {
+
             Stages[stageIndex].SetActive(false);
             stageIndex++;
             Stages[stageIndex].SetActive(true);
