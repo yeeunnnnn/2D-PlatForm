@@ -7,4 +7,6 @@
 <img src="https://user-images.githubusercontent.com/128384646/275312006-a9ab9e46-2a12-48fe-9b93-4fc3b27a99ed.gif">
 
 ## 출처
-<img src="https://user-images.githubusercontent.com/128384646/275312091-29e868c2-3a1a-4777-9910-aecbdcb325e6.png" width="400" height="400"/>
+[골드메탈] 유튜브 무료 강의
+
+<https://www.youtube.com/@goldmetal>
