@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyMove : MonoBehaviour
 {
     Rigidbody2D rigid;
-    public int nextMove;  // Çàµ¿ÁöÇ¥¸¦ °áÁ¤ÇÒ º¯¼ö ÇÏ³ª¸¦ »ý¼º
+    public int nextMove;  // ï¿½àµ¿ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     Animator anim;
     SpriteRenderer spriteRenderer;
     CapsuleCollider2D capsulecollider;
@@ -23,10 +23,10 @@ public class EnemyMove : MonoBehaviour
     void FixedUpdate()
     {
         // Move
-        rigid.velocity = new Vector2(nextMove, rigid.velocity.y);
+        rigid.linearVelocity = new Vector2(nextMove, rigid.linearVelocity.y);
 
         // Platform Check
-        // ÀÌµ¿ÇÏ´Â °æ·ÎÀÇ »óÅÂ¸¦ ¿¹ÃøÇØ¾ß ÇÏ¹Ç·Î ¾ÕÀ» Ã¼Å©ÇØ¾ß ÇÔ.
+        // ï¿½Ìµï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ ï¿½Ï¹Ç·ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã¼Å©ï¿½Ø¾ï¿½ ï¿½ï¿½.
         Vector2 frontVec = new Vector2(rigid.position.x + nextMove * 0.3f, rigid.position.y);
         Debug.DrawRay(frontVec, Vector3.down, new Color(0, 1, 0));
         RaycastHit2D rayHit = Physics2D.Raycast(frontVec, Vector3.down, 1, LayerMask.GetMask("Platform"));
@@ -37,12 +37,12 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-    //Àç±ÍÇÔ¼ö : ÀÚ½ÅÀ» ½º½º·Î È£ÃâÇÏ´Â ÇÔ¼ö
-    void Think() // Çàµ¿ÁöÇ¥¸¦ ¹Ù²ãÁÙ ÇÔ¼ö ÇÏ³ª¸¦ »ý¼º
+    //ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ : ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½
+    void Think() // ï¿½àµ¿ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½Ù²ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     {
 
         // Set Next Active
-        // Random : ·£´ý ¼ö¸¦ »ý¼ºÇÏ´Â ·ÎÁ÷ °ü·Ã Å¬·¡½º
+        // Random : ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½
         nextMove = Random.Range(-1, 2);
         
      
@@ -57,14 +57,14 @@ public class EnemyMove : MonoBehaviour
         
         // Recursive
         float nextThinkTime = Random.Range(2f, 5f);
-        Invoke("Think", nextThinkTime);     // µô·¹ÀÌ ¾øÀÌ Àç±ÍÇÔ¼ö¸¦ »ç¿ëÇÏ´Â °ÍÀº ¾ÆÁÖ À§Çè.!!  ==>> ¿ì¸®´Â ½Ã°£ÀÌ Á¶±Ý Áö³­ µÚ ÀÌ ÇÔ¼ö¸¦ ½ÇÇà½ÃÅ°°í ½Í´Ù.
+        Invoke("Think", nextThinkTime);     // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.!!  ==>> ï¿½ì¸®ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Å°ï¿½ï¿½ ï¿½Í´ï¿½.
 
     }
 
     void Turn()
     {
         nextMove *= -1;
-        // CancelInvoke() : ÇöÀç ÀÛµ¿ ÁßÀÎ ¸ðµç Invoke ÇÔ¼ö¸¦ ¸ØÃß´Â ÇÔ¼ö
+        // CancelInvoke() : ï¿½ï¿½ï¿½ï¿½ ï¿½Ûµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ Invoke ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ß´ï¿½ ï¿½Ô¼ï¿½
         spriteRenderer.flipX = nextMove == 1;
         CancelInvoke();
         Invoke("Think", 5);
@@ -84,7 +84,7 @@ public class EnemyMove : MonoBehaviour
         // Die Effect Jump
         rigid.AddForce(Vector2.up * 5, ForceMode2D.Impulse);
 
-        // Destory          ºñÈ°¼ºÈ­ ·ÎÁ÷Àº ½Ã°£Â÷¸¦ µÎ¾î ½ÇÇà½ÃÅ²´Ù.
+        // Destory          ï¿½ï¿½È°ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Å²ï¿½ï¿½.
         Invoke("DeActive", 5);
 
     }

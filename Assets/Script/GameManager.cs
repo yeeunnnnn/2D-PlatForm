@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0;
 
             // Result UI
-            Debug.Log("°ÔÀÓ Å¬¸®¾î!");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½!");
 
             // Restart Button UI
             Text btnText = RestartBtn.GetComponentInChildren<Text>();
@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
             player.OnDie();
 
             // Result Ui
-            Debug.Log("Á×¾ú½À´Ï´Ù!");
+            Debug.Log("ï¿½×¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½!");
 
             // Retry Button UI
             RestartBtn.SetActive(true);
@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             // Player Reposition
-            if(health > 1)                  // ¸¶Áö¸· Ã¼·Â¿¡¼­ ³¶¶³¾îÁöÀÏ ¶©, ¿øÀ§Ä¡ ÇÏÁö ¾Ê±â.
+            if(health > 1)                  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¼ï¿½Â¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½.
             {
                 PlayerReposition();
             }
